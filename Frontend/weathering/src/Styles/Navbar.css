@@ -1,0 +1,52 @@
+.container{
+    border-radius: 5px;
+    background-color: #c2e38ade;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.brand-name{ 
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+#nav-links-container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 300px;
+    margin-right: 200px;
+}
+
+.nav-item{
+    margin: 10px;
+    list-style: none;
+}
+
+.nav-item :hover{
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: black;
+}
+
+#search-bar{
+    color: #6f9333;
+    background-color: #c6e78d;
+    border: 1px solid #6f9333;
+    border-radius: 8px;
+    height: 25px;
+    width: 150px;
+    margin-right: 10px;
+}
