@@ -1,1 +1,2 @@
 This is a weather website which can be used to get information about the weather.
+We will also try to give you accurate weather forecaste results.
