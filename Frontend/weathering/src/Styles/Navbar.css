@@ -1,13 +1,14 @@
 .container{
     border-radius: 5px;
-    background-color: #c2e38ade;
+    background-color: #15262da3;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
+
 }
 
 .brand-name{ 
     margin-left: 10px;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -38,15 +39,24 @@
 
 .nav-link{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 #search-bar{
-    color: #6f9333;
-    background-color: #c6e78d;
-    border: 1px solid #6f9333;
+    color: #adcbd7;
+    background-color: #4a707f1f;
+    border: 1px solid #b4c7cf;
     border-radius: 8px;
     height: 25px;
     width: 150px;
+}
+
+#signup-btn{
+    background-color: #4a707f1f;
+    border: 1px solid #b4c7cf;
+    color: white;
+    border-radius: 8px;
+    height: 26px;
+    width: 70px;
     margin-right: 10px;
 }

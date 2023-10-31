@@ -24,6 +24,7 @@ function Navbar() {
                     <form>
                         <input id='search-bar' type="search" placeholder="Search" />
                     </form>
+                    <button id='signup-btn'>Sign Up</button>
                 
             </div>
         </nav>

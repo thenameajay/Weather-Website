@@ -9,6 +9,7 @@ function Register(){
             <input type="number" />
             <label>Set Password</label>
             <input type="password" />
+            <button id="submit-btn">Submit</button>
         </>
     )
 }

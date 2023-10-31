@@ -1,12 +1,16 @@
 import Navbar from "./Layout/Navbar";
 import AllRoutes from "./Routing/AllRoutes";
+import "./Styles/App.css"
 
-function App(){
 
-    return(
+function App() {
+
+    return (
         <>
-            <Navbar/>
-            <AllRoutes/>
+            <section id="body">
+                <Navbar />
+                <AllRoutes />
+            </section>
         </>
     )
 }
