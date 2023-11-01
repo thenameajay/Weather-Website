@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"
 import "../Styles/Home.css"
 import humidity from "../Images/humidity.png"
 import pressure from "../Images/pressure.png"
-import temperature from "../Images/temperature.png"
+import temperature from "../Images/temperature1.png"
+import feelslike from "../Images/temperature.png"
 import thunderstorm from "../Images/thunderstorm.png"
 import visibility from "../Images/visibility.png"
 import wind from "../Images/wind.png"
@@ -58,7 +59,7 @@ function Home() {
                         </div>
                     </div>
                     <div class="subContainer">
-                        <img class="weather-img" src={temperature} />
+                        <img class="weather-img" src={feelslike} />
                         <div class="minor-container">
                             <label class="heading">Feels Like </label>
                             <label class="data">{weather_data == undefined ? '' : weather_data.main.feels_like} K</label>

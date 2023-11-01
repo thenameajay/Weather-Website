@@ -1,0 +1,13 @@
+#about-container{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 60px 120px;
+    background-color: #04192185;
+}
+h1{
+    font-size: 28px;
+    color: whitesmoke;
+}
+p{
+    font-size: 18px;
+}

@@ -1,5 +1,5 @@
 .container{
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background-color: #15262da3;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -10,6 +10,10 @@
     margin-left: 10px;
     color: white;
     text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 #navbar{
@@ -24,17 +28,24 @@
     justify-content: space-around;
     flex-direction: row;
     width: 300px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     margin-right: 200px;
+    height: 100%;
 }
 
 .nav-item{
-    margin: 10px;
+    padding: 10px;
     list-style: none;
 }
 
 .nav-item :hover{
     cursor: pointer;
-    font-size: 21px;
+    color: #d1c7c7;
+}
+
+.nav-item.active{
+    background-color: #021b294d;
 }
 
 .nav-link{
@@ -49,6 +60,7 @@
     border-radius: 8px;
     height: 25px;
     width: 150px;
+    padding: 5px 10px;
 }
 
 #signup-btn{
@@ -59,4 +71,9 @@
     height: 26px;
     width: 70px;
     margin-right: 10px;
+}
+
+#signup-btn:hover{
+    cursor: pointer;
+    height: 28px;
 }
