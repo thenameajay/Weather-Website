@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 // const fetch = require("node-fetch")
 // function tellWeather(){
-//     const url ="https://api.openweathermap.org/data/2.5/weather?lat=27.031973&lon=75.893893&appid=0a632f7c0ee705cdce05e73286e0149e"
+//     const url ="https://api.openweathermap.org/data/2.5/weather?lat=latitude&lon=longitude&appid=api-key-h-ye"
 //     fetch(url).then((r1)=>{
 //         console.log(r1.json())
 //     })

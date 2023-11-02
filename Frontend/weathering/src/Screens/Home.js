@@ -28,14 +28,14 @@ function Home() {
 
     function getWeather() {
         // BELOW IS ANOTHER API AVAILABLE FOR WEATHER WHICH ONLY NEEDS CITY NAME AND IN RETURN, GIVES US FORECAST PLUS HISTORICAL WEATHER ETC
-        // fetch(`http://api.weatherstack.com/current?access_key=cf4a8edf5f9d4b70b6c588c25dfc8203&query=${city}`).then((res)=>res.json()).then((result)=>{
+        // fetch(`http://api.weatherstack.com/current?access_key=api id daal apni &query=${city}`).then((res)=>res.json()).then((result)=>{
 
         //         console.log("in fetch 1")
         //     //    setdata(result)
         //        console.log(result);
         //     }) 
 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0a632f7c0ee705cdce05e73286e0149e`).then((res) => res.json()).then((result) => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=api id daal apni`).then((res) => res.json()).then((result) => {
             setdata(result)
             console.log(result)
         })
