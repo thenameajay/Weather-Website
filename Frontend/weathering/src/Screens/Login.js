@@ -8,7 +8,7 @@ function Login() {
         const email=document.getElementById("lemail").value
         const password=document.getElementById("lpassword").value
 
-        fetch("http://localhost:8765/login", {
+        fetch("https://weather-website-0ltb.onrender.com/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(
@@ -55,3 +55,5 @@ function Login() {
 }
 
 export default Login
+
+// https://weather-website-0ltb.onrender.com

@@ -8,7 +8,7 @@ function Register() {
         const email=document.getElementById("remail").value
         const password=document.getElementById("rpassword").value
 
-        fetch("http://localhost:8765/register", {
+        fetch("https://weather-website-0ltb.onrender.com/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(
@@ -29,7 +29,7 @@ function Register() {
     function verifyOTP(){
         const email=document.getElementById("remail").value
         const userEnteredOtp=document.getElementById("rotp").value
-        fetch("http://localhost:8765/register/otp-verification", {
+        fetch("https://weather-website-0ltb.onrender.com/register/otp-verification", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(
