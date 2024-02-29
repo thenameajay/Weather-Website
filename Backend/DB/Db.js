@@ -1,6 +1,6 @@
 const mongoose =  require("mongoose")
 
-mongoose.connect('mongodb://127.0.0.1:27017/Weathering',{useNewUrlParser:true})
+mongoose.connect('mongodb+srv://thenameajay:qK7Fr0RZSOH40ywN@weatheringcluster.vaqat5a.mongodb.net/?retryWrites=true&w=majority&appName=weatheringcluster',{useNewUrlParser:true})
 
 const db=mongoose.connection
 
