@@ -24,11 +24,15 @@ function Navbar() {
                         <li class={`nav-item ${isActive('contact') ? 'active' : ''}`}>
                             <a class='nav-link' aria-current="page" onClick={()=>navigate('/contact')}>Contact</a>
                         </li>
+                        <li class={`nav-item ${isActive('more') ? 'active' : ''}`}>
+                            <a class='nav-link' aria-current="page" onClick={()=>navigate('/more')}>More</a>
+                        </li>
                     </ul>
-                    <form>
+                    {/* <form>
                         <input id='search-bar' type="search" placeholder="Search Weather" />
-                    </form>
-                    <button id='signup-btn' onClick={()=>navigate('/register')}>Sign Up</button>
+                        <button id='search-btn' onClick={()=>navigate('/by-city-name')}>&#128269;</button>
+                    </form> */}
+                    <button id='signup-btn' onClick={()=>navigate('/login')} style={{display : isActive('login') ? "none":"flex" }}>Login</button>
                 
             </div>
         </nav>

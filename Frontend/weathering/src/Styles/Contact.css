@@ -1,0 +1,27 @@
+#contact-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 80%;
+    background-color: #19183091;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-self: center;
+    margin: 5%;
+}
+
+.contact-links{
+    color: white;
+    text-decoration: none;
+    height: 15%;
+    width: 30%;
+}
+
+.contact-btn{
+    color: white;
+    height: 100%;
+    width: 100%;
+    background-color: #21162d99;
+}

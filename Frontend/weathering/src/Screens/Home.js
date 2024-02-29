@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import "../Styles/Home.css"
 import humidity from "../Images/humidity.png"
 import pressure from "../Images/pressure.png"
@@ -10,38 +9,25 @@ import visibility from "../Images/visibility.png"
 import wind from "../Images/wind.png"
 
 function Home() {
-    const navigate = useNavigate()
-
     const [weather_data, setdata] = useState()
-    const [city, setcity] = useState("Jaipur")
     const [lat, setlat] = useState()
     const [lon, setlon] = useState()
+    const [date, setDate] = useState()
+
 
     navigator.geolocation.getCurrentPosition((position) => {
         setlat(position.coords.latitude)
         setlon(position.coords.longitude)
     })
 
-    function signUp() {
-        navigate('/register')
-    }
-
-    function getWeather() {
-        // BELOW IS ANOTHER API AVAILABLE FOR WEATHER WHICH ONLY NEEDS CITY NAME AND IN RETURN, GIVES US FORECAST PLUS HISTORICAL WEATHER ETC
-        // fetch(`http://api.weatherstack.com/current?access_key=api id daal apni &query=${city}`).then((res)=>res.json()).then((result)=>{
-
-        //         console.log("in fetch 1")
-        //     //    setdata(result)
-        //        console.log(result);
-        //     }) 
-
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=api id daal apni`).then((res) => res.json()).then((result) => {
-            setdata(result)
-            console.log(result)
-        })
-    }
-
-
+    useEffect(() => {
+        if (lat != undefined && lon != undefined) {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_ID}`).then((res) => res.json()).then((result) => {
+                setdata(result)
+                console.log(result)
+            })
+        }
+    }, [lat, lon])
 
     return (
         <>
@@ -55,41 +41,47 @@ function Home() {
                         <img class="weather-img" src={temperature} />
                         <div class="minor-container">
                             <label class="heading">Temperature </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.main.temp} K</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.main.temp + ' K'}</label>
                         </div>
                     </div>
                     <div class="subContainer">
                         <img class="weather-img" src={feelslike} />
                         <div class="minor-container">
                             <label class="heading">Feels Like </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.main.feels_like} K</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.main.feels_like + ' K'}</label>
                         </div>
                     </div>
                     <div class="subContainer">
                         <img class="weather-img" src={humidity} />
                         <div class="minor-container">
                             <label class="heading">Humidity </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.main.humidity}</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.main.humidity + ' %'}</label>
                         </div>
                     </div>
                     <div class="subContainer">
                         <img class="weather-img" src={pressure} />
                         <div class="minor-container">
                             <label class="heading">Pressure </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.main.pressure}</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.main.pressure + ' hPa'}</label>
                         </div>
                     </div>
                     <div class="subContainer">
                         <img class="weather-img" src={thunderstorm} />
                         <div class="minor-container">
                             <label class="heading">Weather </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.weather.discription}</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.weather[0].description}</label>
                         </div>
                     </div>
                     <div class="subContainer">
                         <img class="weather-img" src={wind} />
                         <div class="minor-container">
                             <label class="heading">Wind </label>
+                            <hr />
                             <label class="data">{weather_data == undefined ? '' : `${weather_data.wind.speed} m/s in ${weather_data.wind.deg} Deg`}</label>
                         </div>
                     </div>
@@ -97,25 +89,10 @@ function Home() {
                         <img class="weather-img" src={visibility} />
                         <div class="minor-container">
                             <label class="heading">Visiblity </label>
-                            <label class="data">{weather_data == undefined ? '' : weather_data.visibility}</label>
+                            <hr />
+                            <label class="data">{weather_data == undefined ? '' : weather_data.visibility + ' m'}</label>
                         </div>
                     </div>
-                    <div class="subContainer">
-                        <img class="weather-img" src="" />
-                        <div class="minor-container">
-                            <label class="heading">Sunrise </label>
-                            <label class="data">{weather_data == undefined ? '' : Date(weather_data.sys.sunrise)}</label>
-                        </div>
-                    </div>
-                    <div class="subContainer">
-                        <img class="weather-img" src="" />
-                        <div class="minor-container">
-                            <label class="heading">Sunset </label>
-                            <label class="data">{weather_data == undefined ? '' : Date(weather_data.sys.sunset)}</label>
-                        </div>
-                    </div>
-
-                    <button id="submit-btn" onClick={() => getWeather()} type="submit">Get Weather</button>
                 </div>
             </div>
         </>

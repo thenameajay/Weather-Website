@@ -1,13 +1,41 @@
 #about-container{
     color: white;
     font-family: 'Times New Roman', Times, serif;
-    padding: 60px 120px;
-    background-color: #04192185;
+    background-color: #000000c7;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 h1{
+    width: auto;
     font-size: 28px;
-    color: whitesmoke;
+    color: #cfb8dc;
+    height: auto;
+    margin-top: 2%;
 }
 p{
+    width: 90%;
+    margin-top: 1%;
     font-size: 18px;
+    height: auto;
+}
+
+@media screen and (max-width:420px){
+    #about-container{
+        background-color: #000000c4;
+        height: 80%;
+    }
+    h1{
+        font-size: 120%;
+        margin: 3%;
+        text-align: center;
+        /* text-shadow:50x 2px pink; */
+    }
+    p{
+        font-size: 100%;
+        text-align: justify;
+        padding-bottom: 10px;
+    }
 }

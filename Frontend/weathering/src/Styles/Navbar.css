@@ -1,42 +1,47 @@
 .container{
-    /* border-radius: 5px; */
     background-color: #15262da3;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-
+    height: 10%;
 }
 
 .brand-name{ 
-    margin-left: 10px;
+    margin-left: 0% 3%;
     color: white;
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
-    font-size: 25px;
     font-weight: bold;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
 }
 
 #navbar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: 50px;
+    height: 100%;
+    width: 100%;
 }
 
 #nav-links-container{
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    width: 300px;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-right: 200px;
+    width: 50%;
     height: 100%;
 }
 
 .nav-item{
-    padding: 10px;
     list-style: none;
+    height: 100%;
+    width: fit-content;
+    margin-right: 5%;
 }
 
 .nav-item :hover{
@@ -51,29 +56,60 @@
 .nav-link{
     text-decoration: none;
     color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: large;
 }
 
-#search-bar{
-    color: #adcbd7;
-    background-color: #4a707f1f;
-    border: 1px solid #b4c7cf;
-    border-radius: 8px;
-    height: 25px;
-    width: 150px;
-    padding: 5px 10px;
-}
+
 
 #signup-btn{
     background-color: #4a707f1f;
     border: 1px solid #b4c7cf;
     color: white;
     border-radius: 8px;
-    height: 26px;
-    width: 70px;
-    margin-right: 10px;
+    height: 60%;
+    width: auto;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 #signup-btn:hover{
+    background-color: #3b5b671f;
     cursor: pointer;
-    height: 28px;
+    height: 70%;
+}
+
+@media screen and (max-width:420px){
+    .container{
+        height: 15%;
+        background-color: #250e2acf;
+    }
+
+    .brand-name{
+        height: 40%;
+    }
+
+    #nav-links-container{
+        height: 20%;
+    }
+
+    #signup-btn{
+        height: 25%;
+    }
+
+    #navbar{
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    .nav-item.active{
+        background-color: #f5f5f500;
+    }
+
+    #signup-btn:hover{
+        height: 20%;
+    }
 }

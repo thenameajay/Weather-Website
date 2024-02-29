@@ -8,7 +8,7 @@ function App() {
     return (
         <>
             <section id="body">
-                <Navbar />
+                <Navbar/>
                 <AllRoutes />
             </section>
         </>

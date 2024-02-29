@@ -1,6 +1,8 @@
 body{
-    background-image: url("../Images/bg8.jpg");
+    margin: 0px;
+    background-image: url("../Images/bg10.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 100vh;
 }
