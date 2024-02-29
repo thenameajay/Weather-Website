@@ -22,6 +22,7 @@ function Home() {
 
     useEffect(() => {
         if (lat != undefined && lon != undefined) {
+            console.log(process.env.REACT_APP_OPEN_WEATHER_MAP_API_ID)
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_ID}`).then((res) => res.json()).then((result) => {
                 setdata(result)
                 console.log(result)
