@@ -1,6 +1,7 @@
 const mongoose =  require("mongoose")
+require("dotenv").config()
 
-mongoose.connect(`mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@weatheringcluster.vaqat5a.mongodb.net/?retryWrites=true&w=majority&appName=weatheringcluster`,{useNewUrlParser:true})
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@weatheringcluster.vaqat5a.mongodb.net/?retryWrites=true&w=majority&appName=weatheringcluster`,{useNewUrlParser:true})
 
 const db=mongoose.connection
 
