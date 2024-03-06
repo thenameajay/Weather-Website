@@ -114,7 +114,7 @@ function WeatherForecast() {
                 <div id="outer-div-forecast">
                     <div id="first-sec-forecast">
                         <button id="back-btn-forecast" onClick={() => back()}>&larr;</button>
-                        <input id="search-forecast" type="search" placeholder="<City>/<State>" />
+                        <input id="search-forecast" type="search" placeholder="i.e. jaipur/rajasthan" />
                         <button id="search-btn" onClick={() => setcity(document.getElementById("search-forecast").value)}>get</button>
                     </div>
 
@@ -230,7 +230,7 @@ function WeatherForecast() {
             <>
                 <div id="outer-div-forecast">
                     <div id="first-sec-forecast">
-                        <input id="search-forecast" type="search" placeholder="<City>/<State>" />
+                        <input id="search-forecast" type="search" placeholder="i.e. jaipur/rajasthan" />
                         <button id="search-btn" onClick={() => setcity(document.getElementById("search-forecast").value)}>get</button>
                     </div>
 
