@@ -6,6 +6,7 @@ import Login from "../Screens/Login";
 import More from "../Screens/More";
 import Contact from "../Screens/Contact";
 import WeatherForecast from "../Screens/WeatherForecast";
+import Unsubscribe from "../Screens/UnsubscribePage";
 
 function AllRoutes() {
 
@@ -19,6 +20,7 @@ function AllRoutes() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/more' element={<More />} />
+                <Route path='/unsubscribe-us' element={<Unsubscribe />} />
                 <Route path='/more/weather-forecast' element={<WeatherForecast />} />
             </Routes>
         </>

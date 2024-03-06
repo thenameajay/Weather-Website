@@ -17,6 +17,18 @@ const userSchema = mongoose.Schema({
     otp:{
         type: String,
         required:false
+    },
+    subscribed:{
+        type:Boolean,
+        required:true
+    },
+    latitude:{
+        type: String,
+        required:true
+    },
+    longitude:{
+        type: String,
+        required:true
     }
 })
 

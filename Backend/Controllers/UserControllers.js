@@ -18,9 +18,10 @@ const transporter = nodemailer.createTransport({
 })
 // --------------------------------------------------------
 
+
 exports.addUser = (req, res) => {
     let encrptPassword
-    const { name, email, password } = req.body
+    const { name, email, password, lat, lon } = req.body
 
     userSchema.find({ email: email }).then((rslt) => {
         if (rslt.length == 0) {
@@ -83,12 +84,7 @@ exports.addUser = (req, res) => {
                         }
                         else {
                             encrptPassword = hash
-                            console.log("encrypted pswd")
-                            console.log(encrptPassword)
-                            console.log("encrypted pswd")
-
-                            newUserSchema.insertMany({ name: name, email: email, password: encrptPassword }).then((r11) => {
-                                console.log(r11)
+                            newUserSchema.insertMany({ name: name, email: email, password: encrptPassword, latitude: lat, longitude: lon }).then((r11) => {
                                 console.log("data stored successfully")
                             }).catch((err) => {
                                 console.log("error in storing data")
@@ -122,6 +118,33 @@ exports.addUser = (req, res) => {
     })
 }
 
+exports.unsubscribe=(req,res)=>{
+    const {unsubscribingMail, password} = req.body
+        userSchema.find({email:unsubscribingMail}).then((result)=>{
+            bcrypt.compare(password, result[0].password, function(err, status){
+                if(err){
+                    console.log("error in unsubscription")
+                    console.log(err)
+                }
+                else{
+                    if(status){
+                        userSchema.updateOne({email : result[0].email}, {$set:{subscribed : false}}).then((r1)=>{
+                            console.log("unsubscribed successfully")
+                            res.status(200).send({ status: 200, message: "Unsubscribed Successfully !" })
+                        }).catch((error)=>{
+                            console.log(error)
+                        })
+                    }
+                    else{
+                        console.log("invalid password")
+                        res.status(300).send({ status: 300, message: "Invalid Username or Password !" })
+
+                    }
+                }
+            })
+        })
+}
+
 exports.verifyOtp = (req, res) => {
     const { email, userEnteredOtp } = req.body
     newUserSchema.find({ email: email }).then((r1) => {
@@ -137,7 +160,7 @@ exports.verifyOtp = (req, res) => {
                     if (userEnteredOtp == r2[0].otp) {
 
                         if (Number(new Date) - Number(r2[0].time) < 300000) {
-                            userSchema.insertMany({ name: r1[0].name, email: r1[0].email, password: r1[0].password })
+                            userSchema.insertMany({ name: r1[0].name, email: r1[0].email, password: r1[0].password, subscribed:true, latitude:r1[0].latitude, longitude:r1[0].longitude })
                             res.status(200).send({ status: 200, message: "Registration Successfull !" })
                             console.log("registration successfull")
                         }
@@ -161,8 +184,6 @@ exports.verifyOtp = (req, res) => {
                     else {
                         console.log("invalid otp")
                         res.status(401).send({ status: 401, message: "Invalid OTP !" })
-                        console.log("user entered otp is : " + userEnteredOtp)
-                        console.log("actual otp is :" + r2[0].otp)
                     }
                 }
             })
@@ -172,7 +193,7 @@ exports.verifyOtp = (req, res) => {
 }
 
 exports.login = (req, res) => {
-    const { email, password } = req.body
+    const { email, password, lat, lon } = req.body
 
     userSchema.find({ email: email }).then((r1) => {
         if (r1.length == 0) {
@@ -187,11 +208,12 @@ exports.login = (req, res) => {
                 else {
                     if (status) {
                         console.log("Login Successful, Welcome " + r1[0].name)
-                        res.status(400).send({ status: 400, message: "login successfull" })
+                        res.status(200).send({ status: 200, message: "login successfull" })
+                        userSchema.updateOne({email : email}, {$set:{latitude : String(lat), longitude:String(lon)}}).catch((errr)=>{console.log(errr)})
                     }
                     else {
                         console.log("invalid password")
-                        res.status(312).send({ status: 300, message: "invalid password" })
+                        res.status(312).send({ status: 312, message: "invalid password" })
                     }
                 }
             })

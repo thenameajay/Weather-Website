@@ -6,6 +6,7 @@ const db = require("./DB/Db")
 const bodyParser = require('body-parser')
 const schedule = require('node-schedule')
 const ndmlr = require('nodemailer')
+const fetch = require("node-fetch")
 require("dotenv").config()
 const port = 8765
 const cors = require('cors')
@@ -22,54 +23,29 @@ app.use(cors({origin:'https://weatheringtoyou.onrender.com'}))
 // -------------------------------------------
 // WORK IN PROGRESS
 
+const MailTransporter = ndmlr.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.EMAILID,
+        pass: process.env.APP_PASSWORD,
+    },
+})
+
 // FOR A SCHEDULE TASK TO RUN IN PARALLEL
-// IN WORKING CONDITION
 
-// schedule.scheduleJob('*/5 * * * * *', function(){
-//     console.log("hii i am ajay")
-// })
-
-// const MailTransporter = ndmlr.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 465,
-//     secure: true,
-//     auth: {
-//         user: process.env.EMAILID,
-//         pass: process.env.APP_PASSWORD,
-//     },
-// })
-
-// userSchema.find().then((res)=>{
-//     let allUsersEmail=[]
-//     console.log(res)
-//     console.log(res[1].name)
-
-//     res.forEach(element => {
-//         allUsersEmail.push(element.email)
-//     });
-
-//     console.log(allUsersEmail)
-// })
-
-// transporter.sendMail({
-//     from: `"Weathering"<${process.env.EMAILID}>`,
-//     to: email,
-//     subject: "OTP verification",
-//     text: "OTP mail",
-//     html: `
-//     <div style="background-color:white">
-//         <h2 style="color:black">Hello ${name} </h2>
-//         Your OTP for registering to Weathering is ${otp} .
-//         <br/>
-//         Please ignore if it not belongs to you and never share otp with anyone.
-//         <br/>
-//         Thank You for Registering.
-//         <br/>
-//         Team Weathering
-//     </div>
-//     `
-
-// })
+schedule.scheduleJob('* * 6 * * *', function(){
+    userSchema.find().then((res)=>{
+        if(res.length!=0){
+            res.forEach(element => {
+                if(element.subscribed==true){
+                    weatherByMail(element.email, element.lat, element.lon)
+                }
+            });
+        }
+    })
+})
 
 // -----------------------------------------
 
@@ -81,15 +57,40 @@ app.use(cors({origin:'https://weatheringtoyou.onrender.com'}))
 //     )
 // })
 
-
-// const fetch = require("node-fetch")
-// function tellWeather(){
-//     const url ="https://api.openweathermap.org/data/2.5/weather?lat=latitude&lon=longitude&appid=api-key-h-ye"
-//     fetch(url).then((r1)=>{
-//         console.log(r1.json())
-//     })
-// }
-
+function weatherByMail(weatherMail, lat, lon){
+    userSchema.find
+    const url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_MAP}`
+    fetch(url).then((r1)=>{
+        return r1.json()
+    }).then((rslt)=>{
+        MailTransporter.sendMail({
+            from: `"Weathering"<${process.env.EMAILID}>`,
+            to: weatherMail,
+            subject: "Today's weather",
+            text: "Weather Today",
+            html: `
+            <div style="background-color:white">
+                <h2 style="color:black">Weather Today</h2>
+                Weather : ${rslt.weather[0].description}
+                <br/>
+                City : ${rslt.name}
+                <br/>
+                Temperature : ${String(rslt.main.temp-273.15).slice(0,5)}&deg;C
+                <br/>
+                Feels Like : ${String(rslt.main.feels_like-273.15).slice(0,5)}&deg;C
+                <br/>
+                Pressure : ${rslt.main.pressure} hPa
+                <br/>
+                Humidty : ${rslt.main.humidity} %
+                <br/>
+                Visibility : ${rslt.visibility}
+            </div>
+            <a href="https://weatheringtoyou.onrender.com/unsubscribe-us">Unsubscribe Weathering</a>
+            
+            `
+        })
+    })
+}
 
 app.use('/',myroutes)
 

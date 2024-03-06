@@ -187,8 +187,8 @@ function WeatherForecast() {
                                 <label class="forecast-heading">Atmosphere </label>
                                 <hr />
                                 <div class="forecast-data-container">
-                                    <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Pressure : ' + forecastData.list[indexValue].main.humidity + ' %'}</label>
-                                    <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Humidity : ' + forecastData.list[indexValue].main.pressure + ' hPa'}</label>
+                                    <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Pressure : ' + forecastData.list[indexValue].main.humidity + ' hPa'}</label>
+                                    <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Humidity : ' + forecastData.list[indexValue].main.pressure + ' %'}</label>
                                     <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Clouds : ' + forecastData.list[indexValue].clouds.all}</label>
                                     <label class="forecast-data">{forecastData == undefined || indexValue == undefined ? '' : 'Visiblity : ' + forecastData.list[indexValue].visibility}</label>
                                 </div>
