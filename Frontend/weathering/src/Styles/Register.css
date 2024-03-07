@@ -21,10 +21,11 @@
     margin-top: 50px;
     border: 2px solid white;
     background-color: #13222794;
-    padding: 100px 230px 100px 230px;
+    padding: 20% 20% 20% 20%;
     border-radius: 5px;
     width: auto;
     height: 20%;
+    text-align: center;
 }
 
 #otp-expire{

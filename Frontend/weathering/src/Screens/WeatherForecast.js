@@ -23,8 +23,8 @@ function WeatherForecast() {
         }
 
         let slashIndx=city.indexOf("/")
-        let trueCity=city.slice(0,slashIndx)
-        let trueState=city.slice(slashIndx+1,city.length).toLowerCase()
+        let trueCity=city.slice(0,slashIndx).trim()
+        let trueState=city.slice(slashIndx+1,city.length).toLowerCase().trim()
 
         fetch(`https://api.api-ninjas.com/v1/geocoding?city=${trueCity}`,{
             method: "GET",

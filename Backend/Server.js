@@ -40,7 +40,8 @@ schedule.scheduleJob('* * 6 * * *', function(){
         if(res.length!=0){
             res.forEach(element => {
                 if(element.subscribed==true){
-                    weatherByMail(element.email, element.lat, element.lon)
+                    weatherByMail(element.email, element.latitude, element.longitude)
+                    console.log("mail sent to "+element.name)
                 }
             });
         }
@@ -63,6 +64,7 @@ function weatherByMail(weatherMail, lat, lon){
     fetch(url).then((r1)=>{
         return r1.json()
     }).then((rslt)=>{
+        console.log(rslt)
         MailTransporter.sendMail({
             from: `"Weathering"<${process.env.EMAILID}>`,
             to: weatherMail,
