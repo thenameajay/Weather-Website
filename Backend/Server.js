@@ -35,7 +35,7 @@ const MailTransporter = ndmlr.createTransport({
 
 // FOR A SCHEDULE TASK TO RUN IN PARALLEL
 
-schedule.scheduleJob('* * 6 * * *', function(){
+schedule.scheduleJob('0 0 6 * * *', function(){
     userSchema.find().then((res)=>{
         if(res.length!=0){
             res.forEach(element => {
@@ -71,8 +71,8 @@ function weatherByMail(weatherMail, lat, lon){
             subject: "Today's weather",
             text: "Weather Today",
             html: `
-            <div style="background-color:white">
-                <h2 style="color:black">Weather Today</h2>
+            <div style="background-color:white ; padding:5px">
+                <h2 style="color:black ; self-align:center">Weather Today</h2>
                 Weather : ${rslt.weather[0].description}
                 <br/>
                 City : ${rslt.name}
