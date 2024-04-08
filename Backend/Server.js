@@ -17,7 +17,7 @@ app.use(
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(cors({origin:'https://weatheringtoyou.onrender.com'}))
+app.use(cors({origin:['https://weatheringtoyou.onrender.com', 'https://weatheringtoyou.vercel.app']}))
 
 
 // -------------------------------------------
